@@ -20,12 +20,13 @@
     </div>
     <!-- ======== Preloader =========== -->
     <!-- ======== sidebar-nav start =========== -->
-   
+   <partial name="/Views/Shared/Admin/Partials/_Sidebar.cshtml"/>
     <div class="overlay"></div>
     <!-- ======== sidebar-nav end =========== -->
     <!-- ======== main-wrapper start =========== -->
     <main class="main-wrapper">
         <!-- ========== header start ========== -->
+        <partial name="/Views/Shared/Admin/Partials/_Header.cshtml" />
         <header class="header">
             <div class="container-fluid">
                 <div class="row">
@@ -240,6 +241,7 @@
                             </div>
                         </div>
                         <!-- end col -->
+                        @RenderBody()
                     </div>
                     <!-- end row -->
                 </div>
