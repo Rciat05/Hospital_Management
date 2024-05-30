@@ -1,4 +1,5 @@
 using Hospital_Management2.Data;
+using Hospital_Management2.Repositories.Paciente;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,11 @@ namespace Hospital_Management2
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+
+            builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
+            builder.Services.AddScoped<IPacienteRepository, PacienteRepository>();
+
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
