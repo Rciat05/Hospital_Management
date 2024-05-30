@@ -2,7 +2,7 @@
 {
     public class PacienteModel
     {
-        public int pacienteID { get; set; }
+        public int PacienteID { get; set; }
         public string NombrePaciente { get; set; }
         public string ApellidoPaciente { get; set; }
         public DateTime FechaNacimiento { get; set; }
