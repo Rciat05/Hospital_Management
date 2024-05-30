@@ -1,7 +1,7 @@
 -- FALTAN POR HACER ESTOS, SOLO ESTAN PEGADOS
 
 -- Procedimiento para insertar un nuevo paciente
-CREATE PROCEDURE InsertarPaciente
+CREATE PROCEDURE spPaciente_Insert
     @Nombre NVARCHAR(100),
     @Apellido NVARCHAR(100),
     @FechaNacimiento DATE,
@@ -16,7 +16,7 @@ BEGIN
 END;
 
 -- Procedimiento para actualizar información de un paciente
-CREATE PROCEDURE ActualizarPaciente
+CREATE PROCEDURE spPaciente_Update
     @PacienteID INT,
     @Nombre NVARCHAR(100),
     @Apellido NVARCHAR(100),
@@ -39,7 +39,7 @@ BEGIN
 END;
 
 -- Procedimiento para eliminar un paciente
-CREATE PROCEDURE EliminarPaciente
+CREATE PROCEDURE spPaciente_Delete
     @PacienteID INT
 AS
 BEGIN
@@ -48,7 +48,7 @@ BEGIN
 END;
 
 -- Procedimiento para obtener información de un paciente por su ID
-CREATE PROCEDURE ObtenerPacientePorID
+CREATE PROCEDURE spPaciente_GetByID
     @PacienteID INT
 AS
 BEGIN
@@ -57,8 +57,24 @@ BEGIN
     WHERE PacienteID = @PacienteID
 END;
 
+-- Procedimiento para obtener información de todos los pacientes
+CREATE PROCEDURE spPaciente_GetAll
+AS
+BEGIN
+    SELECT *
+    FROM Pacientes
+END;
+
+
+
+--TODAVIA NO SE HACE
+--ATENTOS
+--LEAN TARADOS.
+
+
+
 -- Procedimiento para insertar una nueva cita
-CREATE PROCEDURE InsertarCita
+CREATE PROCEDURE spCita_Insert
     @PacienteID INT,
     @DoctorID INT,
     @FechaCita DATETIME,
@@ -69,6 +85,7 @@ BEGIN
     INSERT INTO Citas (PacienteID, DoctorID, FechaCita, MotivoCita, EstadoCitas)
     VALUES (@PacienteID, @DoctorID, @FechaCita, @MotivoCita, @EstadoCitas)
 END;
+DROP PROCEDURE spCita_Insert
 
 -- Procedimiento para actualizar información de una cita
 CREATE PROCEDURE ActualizarCita
