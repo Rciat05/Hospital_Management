@@ -1,14 +1,24 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Hospital_Management2.Repositories.Paciente;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hospital_Management2.Controllers
 {
     public class PacienteController : Controller
     {
-        // GET: PacienteController
-        public ActionResult Index()
+        private readonly IPacienteRepository _pacienteRepository;
+
+        public PacienteController(IPacienteRepository pacienteRepository)
         {
-            return View();
+            _pacienteRepository = pacienteRepository;
+        }
+
+        // GET: PacienteController
+        public async Task<ActionResult> Index()
+        {
+            var pacientes = await _pacienteRepository.GetAllAsync();
+
+            return View(pacientes);
         }
 
         // GET: PacienteController/Details/5
