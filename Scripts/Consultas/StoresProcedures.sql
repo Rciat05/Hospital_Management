@@ -1,4 +1,4 @@
--- FALTAN POR HACER ESTOS, SOLO ESTAN PEGADOS
+---stores procedures para paciente
 
 -- Procedimiento para insertar un nuevo paciente
 CREATE PROCEDURE spPaciente_Insert
@@ -64,6 +64,140 @@ BEGIN
     SELECT *
     FROM Pacientes
 END;
+
+
+
+
+-------------------store procedures para doctores
+
+CREATE PROCEDURE spDoctor_Insert
+    @NombreDoctor NVARCHAR(100),
+    @ApellidoDoctor NVARCHAR(100),
+    @Especialidad NVARCHAR(100),
+    @Telefono NVARCHAR(15),
+    @Email NVARCHAR(100),
+    @FechaContratacion DATE,
+    @Estado NVARCHAR(1)
+AS
+BEGIN
+    INSERT INTO Doctores (NombreDoctor, ApellidoDoctor, Especialidad, Telefono, Email, FechaContratacion, Estado)
+    VALUES (@NombreDoctor, @ApellidoDoctor, @Especialidad, @Telefono, @Email, @FechaContratacion, @Estado);
+END;
+
+
+CREATE PROCEDURE spDoctor_Update
+    @DoctorID INT,
+    @NombreDoctor NVARCHAR(100),
+    @ApellidoDoctor NVARCHAR(100),
+    @Especialidad NVARCHAR(100),
+    @Telefono NVARCHAR(15),
+    @Email NVARCHAR(100),
+    @FechaContratacion DATE,
+    @Estado NVARCHAR(1)
+AS
+BEGIN
+    UPDATE Doctores
+    SET NombreDoctor = @NombreDoctor,
+        ApellidoDoctor = @ApellidoDoctor,
+        Especialidad = @Especialidad,
+        Telefono = @Telefono,
+        Email = @Email,
+        FechaContratacion = @FechaContratacion,
+        Estado = @Estado
+    WHERE DoctorID = @DoctorID;
+END;
+
+
+
+
+CREATE PROCEDURE spDoctor_Delete
+    @DoctorID INT
+AS
+BEGIN
+    DELETE FROM Doctores
+    WHERE DoctorID = @DoctorID;
+END;
+
+
+
+CREATE PROCEDURE spDoctor_GetAll
+AS
+BEGIN
+    SELECT * FROM Doctores;
+END;
+
+
+
+CREATE PROCEDURE spDoctor_GetByID
+    @DoctorID INT
+AS
+BEGIN
+    SELECT * FROM Doctores
+    WHERE DoctorID = @DoctorID;
+END;
+
+
+
+
+------stored procedures para habitaciones
+
+
+
+CREATE PROCEDURE spHabitacion_Insert
+    @NumeroHabitacion NVARCHAR(10),
+    @TipoHabitacion NVARCHAR(50),
+    @EstadoHabitaciones NVARCHAR(1)
+AS
+BEGIN
+    INSERT INTO Habitaciones (NumeroHabitacion, TipoHabitacion, EstadoHabitaciones)
+    VALUES (@NumeroHabitacion, @TipoHabitacion, @EstadoHabitaciones);
+END;
+
+
+CREATE PROCEDURE spHabitacion_Update
+    @HabitacionID INT,
+    @NumeroHabitacion NVARCHAR(10),
+    @TipoHabitacion NVARCHAR(50),
+    @EstadoHabitaciones NVARCHAR(1)
+AS
+BEGIN
+    UPDATE Habitaciones
+    SET NumeroHabitacion = @NumeroHabitacion,
+        TipoHabitacion = @TipoHabitacion,
+        EstadoHabitaciones = @EstadoHabitaciones
+    WHERE HabitacionID = @HabitacionID;
+END;
+
+
+
+CREATE PROCEDURE spHabitacion_Delete
+    @HabitacionID INT
+AS
+BEGIN
+    DELETE FROM Habitaciones
+    WHERE HabitacionID = @HabitacionID;
+END;
+
+
+CREATE PROCEDURE spHabitacion_GetAll
+AS
+BEGIN
+    SELECT * FROM Habitaciones;
+END;
+
+
+
+CREATE PROCEDURE spHabitacion_GetByID
+    @HabitacionID INT
+AS
+BEGIN
+    SELECT * FROM Habitaciones
+    WHERE HabitacionID = @HabitacionID;
+END;
+
+
+
+
 
 
 

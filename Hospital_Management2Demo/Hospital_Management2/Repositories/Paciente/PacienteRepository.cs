@@ -24,7 +24,7 @@ namespace Hospital_Management2.Repositories.Paciente
         {
             var pacientes = await _dataAccess.GetDataAsync<PacienteModel, dynamic>(
                 "spPaciente_GetByID",
-                new { PacienteId = id }
+                new { PacienteID = id }
                 );
 
             return pacientes.FirstOrDefault();
