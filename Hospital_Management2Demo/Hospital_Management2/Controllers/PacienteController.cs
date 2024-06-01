@@ -1,4 +1,6 @@
-﻿using Hospital_Management2.Repositories.Paciente;
+﻿using FluentValidation;
+using Hospital_Management2.Models;
+using Hospital_Management2.Repositories.Paciente;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,8 +9,9 @@ namespace Hospital_Management2.Controllers
     public class PacienteController : Controller
     {
         private readonly IPacienteRepository _pacienteRepository;
-
-        public PacienteController(IPacienteRepository pacienteRepository)
+        private readonly IValidator<PacienteModel> _validator;
+        public PacienteController(IPacienteRepository pacienteRepository, 
+            IValidator<PacienteModel>)
         {
             _pacienteRepository = pacienteRepository;
         }
