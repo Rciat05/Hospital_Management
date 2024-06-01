@@ -1,0 +1,42 @@
+﻿@model Hospital_Management2.Models.MedicamentoModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar Medicamento</h1>
+
+<h3>¿Desea eliminar la información de este Medicamento?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Nombre:</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">Descripción:</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class="col-sm-2">Tiempo Administrable:</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TiempoAdministrable)
+        </dd>
+        <dt class="col-sm-2">Cantidad:</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input asp-for="MedicamentoID" type="hidden" class="form-control" />
+        <div class="col-4 offset-2 row">
+            <div class="col">
+                <button type="submit" class="btn btn-danger w-100"><i class="fa-solid fa-trash"></i> Borrar</button>
+            </div>
+            <div class="col">
+                <a class="btn btn-info w-100" asp-action="Index"><i class="fa-solid fa-arrow-left"></i> Volver</a>
+            </div>
+        </div>
+    </form>
+</div>
