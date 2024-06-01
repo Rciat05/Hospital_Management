@@ -13,10 +13,10 @@ namespace Hospital_Management2.Controllers
     {
         private readonly IDoctorRepository _doctorRepository;
         private readonly IValidator<DoctorModel> _validator;
-        public DoctorController(IDoctorRepository doctorrepository, 
+        public DoctorController(IDoctorRepository doctorRepository, 
             IValidator<DoctorModel> validator)
         {
-            _doctorRepository = doctorrepository;
+            _doctorRepository = doctorRepository;
             _validator = validator;
 
         }
@@ -24,9 +24,9 @@ namespace Hospital_Management2.Controllers
         // GET: DoctorController
         public async Task<ActionResult> Index()
         {
-            var doctores = await _doctorRepository.GetAllAsync();
+            var doctor = await _doctorRepository.GetAllAsync();
 
-            return View(doctores);
+            return View(doctor);
         }
 
 
@@ -36,8 +36,14 @@ namespace Hospital_Management2.Controllers
             return View();
         }
 
-        // GET: DoctorController/Create
-        [HttpPost]
+		// GET: DoctorController/Create
+		public ActionResult Create()
+		{
+			return View();
+		}
+
+		// GET: DoctorController/Create
+		[HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(DoctorModel doctor)
         {
@@ -106,7 +112,7 @@ namespace Hospital_Management2.Controllers
         // POST: DoctorController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteAsync(int id)
         {
             try
             {

@@ -24,7 +24,9 @@ namespace Hospital_Management2.Models
 
         [EmailAddress(ErrorMessage = "Ingrese un correo eléctronico válido.")]
         public string Email { get; set; }
-        public DateTime FechaRegistro { get; set; }
+
+		[Required(ErrorMessage = "La fecha de registro no debe estar vacío")]
+		public DateTime FechaRegistro { get; set; }
 
     }
 }

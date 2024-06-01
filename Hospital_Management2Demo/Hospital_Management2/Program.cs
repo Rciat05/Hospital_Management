@@ -34,8 +34,8 @@ namespace Hospital_Management2
 
             // Validaciones
             builder.Services.AddScoped<IValidator<PacienteModel>, PacienteValidator>();
-            builder.Services.AddScoped<IValidator<HabitacionModel>, HabitacionValidator>();
-
+			builder.Services.AddScoped<IValidator<DoctorModel>, DoctorValidator>();
+			builder.Services.AddScoped<IValidator<HabitacionModel>, HabitacionValidator>();
             var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
