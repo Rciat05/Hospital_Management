@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Hospital_Management2.Models;
 
 namespace Hospital_Management2.Data
 {
@@ -9,5 +10,6 @@ namespace Hospital_Management2.Data
             : base(options)
         {
         }
+        public DbSet<Hospital_Management2.Models.PacienteModel> PacienteModel { get; set; } = default!;
     }
 }
