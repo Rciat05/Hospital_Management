@@ -43,13 +43,13 @@
                 <label asp-for="FechaContratacion" class="form-label">Fecha contratacion: </label>
                 <input asp-for="FechaContratacion" type="text" class="form-control" />
                 <span asp-validation-for="FechaContratacion" class="text-danger"></span>
-                <button type="submit" class="btn btn-primary">Aceptar</button>
-                <a href="@Url.Action("Index", "Paciente")" class="btn btn-secondary">Cancelar</a>
             </div>
             <div class="mb-3">
                 <label asp-for="Estado" class="form-label">Estado:</label>
                 <input asp-for="Estado" type="text" class="form-control" />
                 <span asp-validation-for="Estado" class="text-danger"></span>
+                <button type="submit" class="btn btn-primary">Aceptar</button>
+                <a href="@Url.Action("Index", "Paciente")" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>
