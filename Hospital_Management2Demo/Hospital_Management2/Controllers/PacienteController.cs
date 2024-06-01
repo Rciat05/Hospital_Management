@@ -5,7 +5,8 @@ using Hospital_Management2.Repositories.Paciente;
 using Hospital_Management2.Validations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Numerics;
+using System;
+using System.Threading.Tasks;
 
 namespace Hospital_Management2.Controllers
 {
@@ -13,10 +14,12 @@ namespace Hospital_Management2.Controllers
     {
         private readonly IPacienteRepository _pacienteRepository;
         private readonly IValidator<PacienteModel> _validator;
-        public PacienteController(IPacienteRepository pacienteRepository, 
+
+        public PacienteController(IPacienteRepository pacienteRepository,
             IValidator<PacienteModel> validator)
         {
             _pacienteRepository = pacienteRepository;
+            _validator = validator; // Inicializa el validador aquí
         }
 
         // GET: PacienteController
@@ -46,18 +49,15 @@ namespace Hospital_Management2.Controllers
         {
             try
             {
-                ValidationResult validationResult =
-                    await _validator.ValidateAsync(paciente);
+                ValidationResult validationResult = await _validator.ValidateAsync(paciente);
 
                 if (!validationResult.IsValid)
                 {
                     validationResult.AddToModelState(this.ModelState);
-
                     return View(paciente);
                 }
 
                 await _pacienteRepository.AddAsync(paciente);
-
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -86,7 +86,6 @@ namespace Hospital_Management2.Controllers
             try
             {
                 await _pacienteRepository.EditAsync(paciente);
-
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
