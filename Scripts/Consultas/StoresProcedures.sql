@@ -201,6 +201,8 @@ END;
 
 
 
+
+
 --TODAVIA NO SE HACE
 --ATENTOS
 --LEAN TARADOS.
@@ -257,4 +259,58 @@ BEGIN
     SELECT *
     FROM Citas
     WHERE CitaID = @CitaID
+END;
+
+--Procedimientos almacenador de Medicamentos
+
+CREATE PROCEDURE spMedicamento_Insert
+    @Nombre NVARCHAR(100),
+    @Descripcion NVARCHAR(255),
+    @TiempoAdministrable NVARCHAR(20),
+    @Cantidad NVARCHAR(5)
+AS
+BEGIN
+    INSERT INTO Medicamentos (Nombre, Descripcion, TiempoAdministrable, Cantidad)
+    VALUES (@Nombre, @Descripcion, @TiempoAdministrable, @Cantidad);
+END;
+
+
+CREATE PROCEDURE spMedicamento_Update
+    @MedicamentoID INT,
+    @Nombre NVARCHAR(100),
+    @Descripcion NVARCHAR(255),
+    @TiempoAdministrable NVARCHAR(20),
+    @Cantidad NVARCHAR(5)
+AS
+BEGIN
+    UPDATE Medicamentos
+    SET Nombre = @Nombre,
+        Descripcion = @Descripcion,
+        TiempoAdministrable = @TiempoAdministrable,
+        Cantidad = @Cantidad
+    WHERE MedicamentoID = @MedicamentoID;
+END;
+
+
+CREATE PROCEDURE spMedicamento_Delete
+    @MedicamentoID INT
+AS
+BEGIN
+    DELETE FROM Medicamentos
+    WHERE MedicamentoID = @MedicamentoID;
+END;
+
+CREATE PROCEDURE spMedicamento_GetAll
+AS
+BEGIN
+    SELECT * FROM Medicamentos;
+END;
+
+
+CREATE PROCEDURE spMedicamento_GetByID
+    @MedicamentoID INT
+AS
+BEGIN
+    SELECT * FROM Medicamentos
+    WHERE MedicamentoID = @MedicamentoID;
 END;

@@ -1,130 +1,131 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using Hospital_Management2.Models;
-using Hospital_Management2.Repositories.Paciente;
+using Hospital_Management2.Repositories.Habitacion;
 using Hospital_Management2.Validations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Numerics;
 
 namespace Hospital_Management2.Controllers
 {
-    public class PacienteController : Controller
+    public class HabitacionController : Controller
     {
-        private readonly IPacienteRepository _pacienteRepository;
-        private readonly IValidator<PacienteModel> _validator;
-        public PacienteController(IPacienteRepository pacienteRepository, 
-            IValidator<PacienteModel> validator)
+        private readonly IHabitacionRepository _habitacionRepository;
+        private readonly IValidator<HabitacionModel> _validator;
+
+        public HabitacionController(IHabitacionRepository habitacionRepository, 
+            IValidator<HabitacionModel> validator)
         {
-            _pacienteRepository = pacienteRepository;
+            _habitacionRepository = habitacionRepository;
             _validator = validator;
+
         }
 
-        // GET: PacienteController
+        // GET: HabitacionController
         public async Task<ActionResult> Index()
         {
-            var pacientes = await _pacienteRepository.GetAllAsync();
+            var habitacion = await _habitacionRepository.GetAllAsync();
 
-            return View(pacientes);
+            return View(habitacion);
         }
 
-        // GET: PacienteController/Details/5
+        // GET: HabitacionController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: PacienteController/Create
+        // GET: HabitacionController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: PacienteController/Create
+        // POST: HabitacionController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(PacienteModel paciente)
+        public async Task<ActionResult> Create(HabitacionModel habitacion)
         {
             try
             {
                 ValidationResult validationResult =
-                    await _validator.ValidateAsync(paciente);
+                    await _validator.ValidateAsync(habitacion);
 
                 if (!validationResult.IsValid)
                 {
                     validationResult.AddToModelState(this.ModelState);
 
-                    return View(paciente);
+                    return View(habitacion);
                 }
 
-                await _pacienteRepository.AddAsync(paciente);
+                await _habitacionRepository.AddAsync(habitacion);
 
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
-                return View(paciente);
+                return View(habitacion);
             }
         }
 
-        // GET: PacienteController/Edit/5
+        // GET: HabitacionController/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
-            var paciente = await _pacienteRepository.GetByIdAsync(id);
+            var habitacion = await _habitacionRepository.GetByIdAsync(id);
 
-            if (paciente == null)
+            if (habitacion == null)
                 return NotFound();
 
-            return View(paciente);
+            return View(habitacion);
         }
 
-        // POST: PacienteController/Edit/5
+        // POST: HabitacionController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(PacienteModel paciente)
+        public async Task<ActionResult> Edit(HabitacionModel habitacion)
         {
             try
             {
-                await _pacienteRepository.EditAsync(paciente);
+                await _habitacionRepository.EditAsync(habitacion);
 
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
-                return View(paciente);
+                return View(habitacion);
             }
         }
 
-        // GET: PacienteController/Delete/5
+        // GET: HabitacionController/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
-            var paciente = await _pacienteRepository.GetByIdAsync(id);
-            if (paciente == null)
+            var habitacion = await _habitacionRepository.GetByIdAsync(id);
+            if (habitacion == null)
                 return NotFound();
 
-            return View(paciente);
+            return View(habitacion);
         }
 
-        // POST: PacienteController/Delete/5
+        // POST: HabitacionController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteAsync(int id)
         {
             try
             {
-                await _pacienteRepository.DeleteAsync(id);
+                await _habitacionRepository.DeleteAsync(id);
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
-                var paciente = await _pacienteRepository.GetByIdAsync(id);
-                if (paciente == null)
+                var habitacion = await _habitacionRepository.GetByIdAsync(id);
+                if (habitacion == null)
                     return NotFound();
 
-                return View(paciente);
+                return View(habitacion);
             }
         }
     }

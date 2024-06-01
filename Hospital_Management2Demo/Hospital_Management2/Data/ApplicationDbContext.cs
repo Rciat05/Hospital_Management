@@ -11,5 +11,6 @@ namespace Hospital_Management2.Data
         {
         }
         public DbSet<Hospital_Management2.Models.PacienteModel> PacienteModel { get; set; } = default!;
+        public DbSet<Hospital_Management2.Models.HabitacionModel> HabitacionModel { get; set; } = default!;
     }
 }

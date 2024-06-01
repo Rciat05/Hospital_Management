@@ -2,6 +2,7 @@ using FluentValidation;
 using Hospital_Management2.Data;
 using Hospital_Management2.Models;
 using Hospital_Management2.Repositories.Doctor;
+using Hospital_Management2.Repositories.Habitacion;
 using Hospital_Management2.Repositories.Paciente;
 using Hospital_Management2.Validations;
 using Microsoft.AspNetCore.Identity;
@@ -29,11 +30,13 @@ namespace Hospital_Management2
 			builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
 			builder.Services.AddScoped<IPacienteRepository, PacienteRepository>();
 			builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+            builder.Services.AddScoped<IHabitacionRepository, HabitacionRepository>();
 
-			// Validaciones
-			builder.Services.AddScoped<IValidator<PacienteModel>, PacienteValidator>();
+            // Validaciones
+            builder.Services.AddScoped<IValidator<PacienteModel>, PacienteValidator>();
+            builder.Services.AddScoped<IValidator<HabitacionModel>, HabitacionValidator>();
 
-			var app = builder.Build();
+            var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())

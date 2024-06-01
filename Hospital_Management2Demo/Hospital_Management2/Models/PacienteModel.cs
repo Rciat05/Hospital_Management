@@ -16,7 +16,7 @@ namespace Hospital_Management2.Models
         [Required(ErrorMessage = "La fecha de nacimiento paciente no debe estar vacío")]
         public DateTime FechaNacimiento { get; set; }
 
-        [Required(ErrorMessage = "Es necesario el tipo de sexto del paciente")]
+        [Required(ErrorMessage = "Es necesario el tipo de sexo del paciente")]
         public string Sexo {  get; set; }
 
         [RegularExpression(@"^\d{4}-\d{4}$", ErrorMessage = "El formato del teléfono debe ser ####-####.")]
