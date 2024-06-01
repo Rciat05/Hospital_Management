@@ -30,8 +30,8 @@ namespace Hospital_Management2.Validations
 				.NotEmpty().WithMessage("La fecha de contratación del doctor es obligatoria");
 
 			RuleFor(doctor => doctor.Estado)
-				.Length(1, 1)
-				.NotNull().WithMessage("El estado del doctor es obligatorio");
+				.NotEmpty().WithMessage("El estado del doctor es obligatorio")
+				.Length(1).WithMessage("El estado del doctor debe ser de un solo carácter");
 		}
 	}
 }
