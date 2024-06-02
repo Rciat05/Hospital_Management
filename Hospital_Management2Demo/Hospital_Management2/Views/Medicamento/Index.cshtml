@@ -7,12 +7,7 @@
 <h1>Lista de medicamentos</h1>
 <hr />
 
-@if (TempData["message"] != null)
-{
-    <div class="alert alert-primary" role="alert">
-        @TempData["message"]
-    </div>
-}
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -62,7 +57,32 @@
     </div>
 </div>
 
-@section Scripts {
+
+@* @section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#medicamentotable").DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'pdf', 'excel'
+                ],
+                columnDefs: [
+                    {
+                        targets: 3,
+                        orderable: false,
+                        searchable: false
+                    }
+                ],
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json'
+                }
+            });
+        });
+    </script>
+} *@
+
+
+@* @section Scripts {
     <script>
         $(document).ready(function () {
             $("#medicamentotable").DataTable({
@@ -83,4 +103,4 @@
             });
         })
     </script>
-}
+} *@

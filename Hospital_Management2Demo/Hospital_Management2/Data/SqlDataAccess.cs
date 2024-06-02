@@ -19,7 +19,12 @@ namespace Hospital_Management2.Data
 			_logger = logger;
 		}
 
-		public async Task<IEnumerable<T>> GetDataAsync<T, P>(
+        public IDisposable GetConnection()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<T>> GetDataAsync<T, P>(
 			string storedProcedure, P parameters, string connection = "DefaultConnection")
 		{
 			try
