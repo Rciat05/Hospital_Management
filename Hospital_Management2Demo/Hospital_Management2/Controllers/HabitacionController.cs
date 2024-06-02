@@ -2,9 +2,11 @@
 using FluentValidation.Results;
 using Hospital_Management2.Models;
 using Hospital_Management2.Repositories.Habitacion;
+using Hospital_Management2.Services;
 using Hospital_Management2.Validations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Numerics;
 
 namespace Hospital_Management2.Controllers
 {
@@ -12,13 +14,14 @@ namespace Hospital_Management2.Controllers
     {
         private readonly IHabitacionRepository _habitacionRepository;
         private readonly IValidator<HabitacionModel> _validator;
-
-        public HabitacionController(IHabitacionRepository habitacionRepository, 
-            IValidator<HabitacionModel> validator)
+        private readonly IEmailServices _emailService;
+        public HabitacionController(IHabitacionRepository habitacionRepository,
+            IValidator<HabitacionModel> validator,
+            IEmailServices emailService)
         {
             _habitacionRepository = habitacionRepository;
             _validator = validator;
-
+            _emailService = emailService;
         }
 
         // GET: HabitacionController
@@ -48,6 +51,12 @@ namespace Hospital_Management2.Controllers
         {
             try
             {
+                string email = "HospitalRiosAguaViva@gmail.com";
+                string subject = "Nueva habitación";
+                string body = "Se habilitó una nueva habitacion con numero " + habitacion.NumeroHabitacion;
+
+                _emailService.SendEmail(email, habitacion.NumeroHabitacion, subject, body);
+
                 ValidationResult validationResult =
                     await _validator.ValidateAsync(habitacion);
 
