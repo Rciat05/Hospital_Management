@@ -4,10 +4,10 @@
     ViewData["Title"] = "Delete";
 }
 <h1>Eliminar doctor</h1>
-
+<hr />
 <h3>¿Desea eliminar la información de este Doctor?</h3>
 <div>
-    <hr />
+    <br />
     <dl class="row">
         <dt class="col-sm-2">Nombre: </dt>
         <dd class="col-sm-10">
@@ -40,15 +40,44 @@
 
     </dl>
 
-    <form asp-action="Delete">
+    <form asp-action="Delete" onsubmit="return confirmAction()">
         <input asp-for="DoctorID" type="hidden" class="form-control" />
         <div class="col-4 offset-2 row">
             <div class="col">
-                <button type="submit" class="btn btn-danger w-100"><i class="fa-solid fa-trash"></i> Borrar</button>
+                <button type="submit" class="btn btn-danger w-100">
+                    <i class="fa-solid fa-trash"></i> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+                    </svg> 
+                </button>
             </div>
             <div class="col">
-                <a class="btn btn-info w-100" asp-action="Index"><i class="fa-solid fa-arrow-left"></i> Volver</a>
+                <a class="btn btn-info w-100" asp-action="Index"><i class="fa-solid fa-arrow-left"></i> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708z" />
+                    </svg>
+                    </a>
             </div>
         </div>
     </form>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+    <script>
+        function confirmAction() {
+            if (confirm('¿Estás seguro de eliminar por completo este doctor?')) {
+                return true; // Si el usuario hace clic en "Aceptar", el formulario se envía al servidor
+            } else {
+                window.location.href = '@Url.Action("Index", "Doctor")'; // Redirigir al usuario al índice si hace clic en "Cancelar"
+                return false; // Devolver false para cancelar el envío del formulario
+            }
+        }
+    </script>
+}

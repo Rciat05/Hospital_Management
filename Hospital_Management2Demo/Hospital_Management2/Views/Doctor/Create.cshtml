@@ -3,8 +3,9 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+<hr />
 <h1>Crear nuevo doctor</h1>
+<hr />
 
 <div class="container">
 <div class="row">
@@ -24,13 +25,13 @@
                 <input asp-for="ApellidoDoctor" type="text" class="form-control" />
                 <span asp-validation-for="ApellidoDoctor" class="text-danger"></span>
             </div>
+                <div class="mb-3">
+                    <label asp-for="Especialidad" class="form-label">Especialidad: </label>
+                    <input asp-for="Especialidad" type="text" class="form-control" />
+                    <span asp-validation-for="Especialidad" class="text-danger"></span>
+                </div>
             <div class="mb-3">
-                <label asp-for="Especialidad" class="form-label">Especialidad: </label>
-                <input asp-for="Especialidad" type="text" class="form-control" />
-                <span asp-validation-for="Especialidad" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Telefono" class="form-label">Sexo:</label>
+                <label asp-for="Telefono" class="form-label">Telefono: </label>
                 <input asp-for="Telefono" type="text" class="form-control" />
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
@@ -48,8 +49,15 @@
                 <label asp-for="Estado" class="form-label">Estado:</label>
                 <input asp-for="Estado" type="text" class="form-control" />
                 <span asp-validation-for="Estado" class="text-danger"></span>
-                <button type="submit" class="btn btn-primary">Aceptar</button>
-                <a href="@Url.Action("Index", "Paciente")" class="btn btn-secondary">Cancelar</a>
+                <br />
+                    <div class="col-4 offset-1 row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                        </div>
+                        <div class="col">
+                            <a href="@Url.Action("Index", "Doctor")" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </div>
             </div>
         </form>
     </div>

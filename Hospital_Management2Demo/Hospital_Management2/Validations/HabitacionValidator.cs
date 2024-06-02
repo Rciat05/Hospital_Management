@@ -12,7 +12,7 @@ namespace Hospital_Management2.Validations
                 .NotNull().WithMessage("El numero de Habitacion es obligatorio");
 
             RuleFor(habitacion => habitacion.TipoHabitacion)
-                .Length(8, 15)
+                .Length(2, 30)
                 .NotNull().WithMessage("El Tipo de habitacion es obligatorio");
 
             RuleFor(habitacion => habitacion.EstadoHabitaciones)

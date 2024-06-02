@@ -5,6 +5,7 @@ using Hospital_Management2.Repositories.Doctor;
 using Hospital_Management2.Repositories.Habitacion;
 using Hospital_Management2.Repositories.Medicamento;
 using Hospital_Management2.Repositories.Paciente;
+using Hospital_Management2.Services;
 using Hospital_Management2.Validations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -39,8 +40,11 @@ namespace Hospital_Management2
 			builder.Services.AddScoped<IValidator<DoctorModel>, DoctorValidator>();
 			builder.Services.AddScoped<IValidator<HabitacionModel>, HabitacionValidator>();
 			builder.Services.AddScoped<IValidator<MedicamentoModel>, MedicamentoValidator>();
-            var app = builder.Build();
 
+            //Services
+            builder.Services.AddTransient<IEmailServices, EmailServices>();
+
+            var app = builder.Build();
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
 			{

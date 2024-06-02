@@ -3,11 +3,11 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+<hr />
 <h1>Agregar Paciente</h1>
 
-<h1>Crear paciente</h1>
-
+<hr />
+<br />
 <div class="container">
 <div class="row">
     <div class="col-md-12">
@@ -50,8 +50,15 @@
                 <label asp-for="FechaRegistro" class="form-label">Fecha de registro: </label>
                 <input asp-for="FechaRegistro" type="text" class="form-control" />
                 <span asp-validation-for="FechaRegistro" class="text-danger"></span>
-                <button type="submit" class="btn btn-primary">Aceptar</button>
-                <a href="@Url.Action("Index", "Paciente")" class="btn btn-secondary">Cancelar</a>
+                    <br />
+                    <div class="col-4 offset-1 row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                        </div>
+                        <div class="col">
+                            <a href="@Url.Action("Index", "Paciente")" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </div>
             </div>
         </form>
     </div>

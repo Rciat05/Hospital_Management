@@ -20,7 +20,7 @@ namespace Hospital_Management2.Validations
                 .NotEmpty().WithMessage("El tiempo administrable del medicamento es obligatorio");
 
             RuleFor(medicamento => medicamento.Cantidad)
-               .Length(10, 30)
+               .Length(1, 10)
                .NotNull().WithMessage("La cantidad del medicamento es obligatorio");
 
         }
