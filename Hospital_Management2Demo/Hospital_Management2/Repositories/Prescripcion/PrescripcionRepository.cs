@@ -50,9 +50,15 @@ namespace Hospital_Management2.Repositories.Prescripcion
         {
             await _dataAccess.SaveDataAsync(
                 "spPrescripcion_Insert",
-                new { prescripcion.CitaID, prescripcion.MedicamentoID });
+                new { prescripcion.PrescripcionID, 
+                    prescripcion.FechaCita,
+                    prescripcion.MotivoCita,
+                    prescripcion.EstadoCitas,
+                    prescripcion.NombreMedicamento,
+                    prescripcion.Descripcion,
+                    prescripcion.TiempoAdministrable,
+                    prescripcion.Cantidad
+                    });
         }
-
-
     }
 }

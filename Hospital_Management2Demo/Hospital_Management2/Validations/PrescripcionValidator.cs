@@ -7,13 +7,33 @@ namespace Hospital_Management2.Validations
 	{
 		public PrescripcionValidator()
 		{
-			RuleFor(prescripcion => prescripcion.CitaID)
-				.NotEmpty().WithMessage("El ID de la cita es obligatorio")
-				.GreaterThan(0).WithMessage("El ID de la cita debe ser mayor que cero");
 
-			RuleFor(prescripcion => prescripcion.MedicamentoID)
-				.NotEmpty().WithMessage("El ID del medicamento es obligatorio")
-				.GreaterThan(0).WithMessage("El ID del medicamento debe ser mayor que cero");
+			RuleFor(prescripcion => prescripcion.FechaCita)
+				.NotEmpty().WithMessage("La fecha de la cita es obligatoria");
+
+			RuleFor(prescripcion => prescripcion.MotivoCita)
+				.NotEmpty().WithMessage("El motivo de la cita es obligatorio")
+				.Length(2, 100).WithMessage("El motivo de la cita debe tener entre 2 y 100 caracteres");
+
+			RuleFor(prescripcion => prescripcion.EstadoCitas)
+				.NotEmpty().WithMessage("El estado de la cita es obligatorio")
+				.Length(1).WithMessage("El estado de la cita debe ser de un solo carácter");
+
+			RuleFor(prescripcion => prescripcion.NombreMedicamento)
+				.Length(3, 50)
+				.NotNull().WithMessage("El nombre del medicamento es obligatorio");
+
+			RuleFor(prescripcion => prescripcion.Descripcion)
+				 .Length(20, 100)
+				 .NotNull().WithMessage("La descripcion del medicamento es obligatorio");
+
+			RuleFor(prescripcion => prescripcion.TiempoAdministrable)
+				.Length(10, 50)
+				.NotEmpty().WithMessage("El tiempo administrable del medicamento es obligatorio");
+
+			RuleFor(prescripcion => prescripcion.Cantidad)
+			   .Length(1, 10)
+			   .NotNull().WithMessage("La cantidad del medicamento es obligatorio");
 		}
 	}
 }
