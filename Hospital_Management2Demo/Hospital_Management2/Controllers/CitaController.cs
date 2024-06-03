@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using Hospital_Management2.Models;
 using Hospital_Management2.Repositories.Cita;
 using Hospital_Management2.Repositories.Paciente;
+using Hospital_Management2.Services;
 using Hospital_Management2.Validations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,11 +15,13 @@ namespace Hospital_Management2.Controllers
     {
         private readonly ICitaRepository _citaRepository;
         private readonly IValidator<CitaModel> _validator;
+        private readonly IEmailServices _emailService;
 
-        public CitaController(IValidator<CitaModel> validator, ICitaRepository citaRepository)
+        public CitaController(IValidator<CitaModel> validator, ICitaRepository citaRepository, IEmailServices emailService)
         {
             _validator = validator;
             _citaRepository = citaRepository;
+            _emailService = emailService;
         }
 
 
@@ -50,6 +53,15 @@ namespace Hospital_Management2.Controllers
         {
             try
             {
+
+                string email = "HospitalRiosAguaViva @gmail.com";
+                string subject = "Nuevo Cita";
+                string body = "Se a registrado una nueva cita para el paciente " + cita.NombrePaciente;
+
+                _emailService.SendEmail(email, cita.NombrePaciente, subject, body);
+
+
+
                 ValidationResult validationResult =
                     await _validator.ValidateAsync(cita);
 

@@ -54,7 +54,7 @@ namespace Hospital_Management2.Controllers
 
                 string email = "HospitalRiosAguaViva@gmail.com";
                 string subject = "Nuevo paciente";
-                string body = "Se agrego un nuevo paciente " + paciente.NombrePaciente;
+                string body = "Se agrego un nuevo paciente, llamado; " + paciente.NombrePaciente;
 
                 _emailService.SendEmail(email, paciente.NombrePaciente, subject, body);
                 ValidationResult validationResult =

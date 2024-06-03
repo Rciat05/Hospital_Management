@@ -2,9 +2,11 @@
 using FluentValidation.Results;
 using Hospital_Management2.Models;
 using Hospital_Management2.Repositories.Prescripcion;
+using Hospital_Management2.Services;
 using Hospital_Management2.Validations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Numerics;
 
 namespace Hospital_Management2.Controllers
 {
@@ -12,11 +14,13 @@ namespace Hospital_Management2.Controllers
     {
         private readonly IPrescripcionRepository _prescripcionRepository;
         private readonly IValidator<PrescripcionModel> _validator;
+        private readonly IEmailServices _emailServices;
 
-        public PrescripcionController(IValidator<PrescripcionModel> validator, IPrescripcionRepository prescripcionRepository)
+        public PrescripcionController(IValidator<PrescripcionModel> validator, IPrescripcionRepository prescripcionRepository, IEmailServices emailServices)
         {
             _validator = validator;
             _prescripcionRepository = prescripcionRepository;
+            _emailServices = emailServices;
         }
 
 
@@ -48,6 +52,13 @@ namespace Hospital_Management2.Controllers
         {
             try
             {
+
+                string email = "HospitalRiosAguaViva @gmail.com";
+                string subject = "Nueva Prescripcion";
+                string body = "Se a agregado una nueva prescripcion por el motivo de: " + prescripcion.MotivoCita;
+
+                _emailServices.SendEmail(email, prescripcion.MotivoCita, subject, body);
+
                 ValidationResult validationResult =
                     await _validator.ValidateAsync(prescripcion);
 
