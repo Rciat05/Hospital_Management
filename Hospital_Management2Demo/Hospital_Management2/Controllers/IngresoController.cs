@@ -2,132 +2,129 @@
 using FluentValidation.Results;
 using Hospital_Management2.Models;
 using Hospital_Management2.Repositories.Cita;
-using Hospital_Management2.Repositories.Paciente;
+using Hospital_Management2.Repositories.Ingreso;
 using Hospital_Management2.Validations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Numerics;
 
 namespace Hospital_Management2.Controllers
 {
-    public class CitaController : Controller
+    public class IngresoController : Controller
     {
-        private readonly ICitaRepository _citaRepository;
-        private readonly IValidator<CitaModel> _validator;
+        private readonly IIngresoRepository _ingresoRepository;
+        private readonly IValidator<IngresoModel> _validator;
 
-        public CitaController(IValidator<CitaModel> validator, ICitaRepository citaRepository)
+        public IngresoController(IValidator<IngresoModel> validator, IIngresoRepository ingresoRepository)
         {
             _validator = validator;
-            _citaRepository = citaRepository;
+            _ingresoRepository = ingresoRepository;
         }
 
-
-
-        // GET: CitaController
+        // GET: IngresoController
         public async Task<ActionResult> Index()
         {
-            var doctor = await _citaRepository.GetAllAsync();
+            var doctor = await _ingresoRepository.GetAllAsync();
 
-            return View(doctor);
+            return View();
         }
 
-        // GET: CitaController/Details/5
+        // GET: IngresoController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: CitaController/Create
+        // GET: IngresoController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CitaController/Create
+        // POST: IngresoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(CitaModel cita)
+        public async Task<ActionResult> Create(IngresoModel ingreso)
         {
             try
             {
                 ValidationResult validationResult =
-                    await _validator.ValidateAsync(cita);
+                    await _validator.ValidateAsync(ingreso);
 
                 if (!validationResult.IsValid)
                 {
                     validationResult.AddToModelState(this.ModelState);
 
-                    return View(cita);
+                    return View(ingreso);
                 }
 
-                await _citaRepository.AddAsync(cita);
+                await _ingresoRepository.AddAsync(ingreso);
 
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
-                return View(cita);
+                return View(ingreso);
             }
         }
 
-        // GET: CitaController/Edit/5
+        // GET: IngresoController/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
-            var cita = await _citaRepository.GetByIdAsync(id);
+            var ingreso = await _ingresoRepository.GetByIdAsync(id);
 
-            if (cita == null)
+            if (ingreso == null)
                 return NotFound();
 
-            return View(cita);
+            return View(ingreso);
         }
 
-        // POST: CitaController/Edit/5
+        // POST: IngresoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(CitaModel cita)
+        public async Task<ActionResult> Edit(IngresoModel ingreso)
         {
             try
             {
-                await _citaRepository.EditAsync(cita);
+                await _ingresoRepository.EditAsync(ingreso);
 
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
-                return View(cita);
+                return View(ingreso);
             }
         }
 
-        // GET: CitaController/Delete/5
+        // GET: IngresoController/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
-            var cita = await _citaRepository.GetByIdAsync(id);
-            if (cita == null)
+            var ingreso = await _ingresoRepository.GetByIdAsync(id);
+            if (ingreso == null)
                 return NotFound();
 
-            return View(cita);
+            return View(ingreso);
         }
 
-        // POST: CitaController/Delete/5
+        // POST: IngresoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteAsync(int id)
         {
             try
             {
-                await _citaRepository.DeleteAsync(id);
+                await _ingresoRepository.DeleteAsync(id);
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
-                var cita = await _citaRepository.GetByIdAsync(id);
-                if (cita == null)
+                var ingreso = await _ingresoRepository.GetByIdAsync(id);
+                if (ingreso == null)
                     return NotFound();
 
-                return View(cita);
+                return View(ingreso);
             }
         }
     }
