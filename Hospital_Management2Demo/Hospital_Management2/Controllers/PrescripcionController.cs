@@ -13,10 +13,10 @@ namespace Hospital_Management2.Controllers
         private readonly IPrescripcionRepository _prescripcionRepository;
         private readonly IValidator<PrescripcionModel> _validator;
 
-        public PrescripcionController(IPrescripcionRepository prescripcionRepository, IValidator<PrescripcionModel> validator)
+        public PrescripcionController(IValidator<PrescripcionModel> validator, IPrescripcionRepository prescripcionRepository)
         {
-            _prescripcionRepository = prescripcionRepository;
             _validator = validator;
+            _prescripcionRepository = prescripcionRepository;
         }
 
 

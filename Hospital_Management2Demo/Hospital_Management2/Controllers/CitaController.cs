@@ -26,9 +26,9 @@ namespace Hospital_Management2.Controllers
         // GET: CitaController
         public async Task<ActionResult> Index()
         {
-            var doctor = await _citaRepository.GetAllAsync();
+            var cita = await _citaRepository.GetAllAsync();
 
-            return View(doctor);
+            return View(cita);
         }
 
         // GET: CitaController/Details/5
