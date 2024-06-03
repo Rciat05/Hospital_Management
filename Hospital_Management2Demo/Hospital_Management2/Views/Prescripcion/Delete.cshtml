@@ -1,11 +1,12 @@
-﻿@model Hospital_Management2.Models.CitaModel
+﻿@model Hospital_Management2.Models.PrescripcionModel
 
 @{
     ViewData["Title"] = "Delete";
 }
-<h1>Eliminar cita</h1>
+
+<h1>Eliminar prescripción</h1>
 <hr />
-<h3>¿Desea eliminar la información de esta cita?</h3>
+<h3>¿Desea eliminar la información de esta prescripción?</h3>
 <div>
     <br />
     <dl class="row">
@@ -21,26 +22,26 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.EstadoCitas)
         </dd>
-        <dt class="col-sm-2">Nombre doctor: </dt>
+        <dt class="col-sm-2">Nombre del medicamento: </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NombreDoctor)
+            @Html.DisplayFor(model => model.NombreMedicamento)
         </dd>
-        <dt class="col-sm-2">Apellido doctor: </dt>
+        <dt class="col-sm-2">Descripción: </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ApellidoDoctor)
+            @Html.DisplayFor(model => model.Descripcion)
         </dd
-        <dt class="col-sm-2">Nombre paciente: </dt>
+        <dt class="col-sm-2">Tiempo Administrable: </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NombrePaciente)
+            @Html.DisplayFor(model => model.TiempoAdministrable)
         </dd>
-        <dt class="col-sm-2">Apellido paciente: </dt>
+        <dt class="col-sm-2">Cantidad: </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ApellidoPaciente)
+            @Html.DisplayFor(model => model.Cantidad)
         </dd>
     </dl>
 
     <form asp-action="Delete" onsubmit="return confirmAction()">
-        <input asp-for="CitaID" type="hidden" class="form-control" />
+        <input asp-for="PrescripcionID" type="hidden" class="form-control" />
         <div class="col-4 offset-2 row">
             <div class="col">
                 <button type="submit" class="btn btn-danger w-100">
@@ -72,10 +73,10 @@
 
     <script>
         function confirmAction() {
-            if (confirm('¿Estás seguro de eliminar por completo esta Cita?')) {
+            if (confirm('¿Estás seguro de eliminar por completo esta prescripcíón?')) {
                 return true; // Si el usuario hace clic en "Aceptar", el formulario se envía al servidor
             } else {
-                window.location.href = '@Url.Action("Index", "Cita")'; // Redirigir al usuario al índice si hace clic en "Cancelar"
+                window.location.href = '@Url.Action("Index", "Prescripcion")'; // Redirigir al usuario al índice si hace clic en "Cancelar"
                 return false; // Devolver false para cancelar el envío del formulario
             }
         }
