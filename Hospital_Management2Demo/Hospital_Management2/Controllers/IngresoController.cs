@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using Hospital_Management2.Models;
-using Hospital_Management2.Repositories.Cita;
 using Hospital_Management2.Repositories.Ingreso;
 using Hospital_Management2.Validations;
 using Microsoft.AspNetCore.Http;
@@ -23,9 +22,9 @@ namespace Hospital_Management2.Controllers
         // GET: IngresoController
         public async Task<ActionResult> Index()
         {
-            var doctor = await _ingresoRepository.GetAllAsync();
+            var ingreso = await _ingresoRepository.GetAllAsync();
 
-            return View();
+            return View(ingreso);
         }
 
         // GET: IngresoController/Details/5

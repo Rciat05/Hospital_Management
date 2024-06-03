@@ -1,0 +1,91 @@
+﻿@model Hospital_Management2.Models.IngresoModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<hr />
+<h1>Crear un nuevo ingreso</h1>
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <form asp-action="Create" onsubmit="return confirmAction();">
+                @Html.AntiForgeryToken()
+                <div class="mb-3">
+                    <label asp-for="NombrePaciente" class="form-label">Nombre del paciente: </label>
+                    <input asp-for="NombrePaciente" type="text" class="form-control" />
+                    <span asp-validation-for="NombrePaciente" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ApellidoPaciente" class="form-label">Apellido del paciente: </label>
+                    <input asp-for="ApellidoPaciente" type="text" class="form-control" />
+                    <span asp-validation-for="ApellidoPaciente" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="NumeroHabitacion" class="form-label">Numero de la habitación:</label>
+                    <input asp-for="NumeroHabitacion" type="text" class="form-control" />
+                    <span asp-validation-for="NumeroHabitacion" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="TipoHabitacion" class="form-label">Tipo de la habitación: </label>
+                    <input asp-for="TipoHabitacion" type="text" class="form-control" />
+                    <span asp-validation-for="TipoHabitacion" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="FechaIngreso" class="form-label">Fecha de ingreso: </label>
+                    <input asp-for="FechaIngreso" type="text" class="form-control" />
+                    <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="FechaAlta" class="form-label">Fecha de alta: </label>
+                    <input asp-for="FechaAlta" type="text" class="form-control" />
+                    <span asp-validation-for="FechaAlta" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DiagnosticoInicial" class="form-label">Diagnostico inicial: </label>
+                    <input asp-for="DiagnosticoInicial" type="text" class="form-control" />
+                    <span asp-validation-for="DiagnosticoInicial" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="EstadoIngresos" class="form-label">Estado de ingresos: </label>
+                    <input asp-for="EstadoIngresos" type="text" class="form-control" />
+                    <span asp-validation-for="EstadoIngresos" class="text-danger"></span>
+                    <br />
+                    <div class="col-4 offset-1 row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                        </div>
+                        <div class="col">
+                            <a href="@Url.Action("Index", "Ingreso")" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+    <script>
+        function confirmAction() {
+            if (confirm('¿Estás seguro de agregar este ingreso?')) {
+                return true; // Si el usuario hace clic en "Aceptar", el formulario se envía al servidor
+            } else {
+                window.location.href = '@Url.Action("Index", "Ingreso")'; // Redirigir al usuario al índice si hace clic en "Cancelar"
+                return false; // Devolver false para cancelar el envío del formulario
+            }
+        }
+    </script>
+}

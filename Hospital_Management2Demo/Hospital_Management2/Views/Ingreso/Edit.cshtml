@@ -1,0 +1,90 @@
+﻿@model Hospital_Management2.Models.IngresoModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar Ingreso</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-controller="Ingreso" onsubmit="return confirmAction()">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="IngresoID" />
+                <label asp-for="NombrePaciente" class="control-label">Nombre del paciente: </label>
+                <input asp-for="NombrePaciente" class="form-control" />
+                <span asp-validation-for="NombrePaciente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApellidoPaciente" class="control-label">Apellido del paciente: </label>
+                <input asp-for="ApellidoPaciente" class="form-control" />
+                <span asp-validation-for="ApellidoPaciente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroHabitacion" class="control-label">Numero de habitación: </label>
+                <input asp-for="NumeroHabitacion" class="form-control" />
+                <span asp-validation-for="NumeroHabitacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoHabitacion" class="control-label">Tipo de habitación:</label>
+                <input asp-for="TipoHabitacion" class="form-control" />
+                <span asp-validation-for="TipoHabitacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaIngreso" class="control-label">Fecha de ingreso:</label>
+                <input asp-for="FechaIngreso" class="form-control" />
+                <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaAlta" class="control-label">Fecha de alta:</label>
+                <input asp-for="FechaAlta" class="form-control" />
+                <span asp-validation-for="FechaAlta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiagnosticoInicial" class="control-label">Diagnostico inicial:</label>
+                <input asp-for="DiagnosticoInicial" class="form-control" />
+                <span asp-validation-for="DiagnosticoInicial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstadoIngresos" class="control-label">Estado de ingresos:</label>
+                <input asp-for="EstadoIngresos" class="form-control" />
+                <span asp-validation-for="EstadoIngresos" class="text-danger"></span>
+            </div>
+            <div class="form-group justify-content-between ">
+                <button type="submit" class="btn btn-info">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
+                    </svg>
+                </button>
+                <a class="btn btn-danger" asp-action="Index">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                    </svg>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+    <script>
+        function confirmAction() {
+            if (confirm('¿Estás seguro de editar este ingreso')) {
+                return true; // Si el usuario hace clic en "Aceptar", el formulario se envía al servidor
+            } else {
+                window.location.href = '@Url.Action("Index", "Ingreso")'; // Redirigir al usuario al índice si hace clic en "Cancelar"
+                return false; // Devolver false para cancelar el envío del formulario
+            }
+        }
+    </script>
+}
