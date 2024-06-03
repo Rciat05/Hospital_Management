@@ -11,7 +11,7 @@
         <form asp-action="Edit" asp-controller="Cita" onsubmit="return confirmAction()">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <input type="hidden" asp-for="DoctorID" />
+                <input type="hidden" asp-for="CitaID" />
                 <label asp-for="FechaCita" class="control-label">Fecha de la cita: </label>
                 <input asp-for="FechaCita" class="form-control" />
                 <span asp-validation-for="FechaCita" class="text-danger"></span>
@@ -27,14 +27,14 @@
                 <span asp-validation-for="EstadoCitas" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PacienteID" class="control-label">PacienteID:</label>
-                <input asp-for="PacienteID" class="form-control" />
-                <span asp-validation-for="PacienteID" class="text-danger"></span>
+                <label asp-for="NombreDoctor" class="control-label">Nombre del Doctor:</label>
+                <input asp-for="NombreDoctor" class="form-control" />
+                <span asp-validation-for="NombreDoctor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DoctorID" class="control-label">DoctorID:</label>
-                <input asp-for="DoctorID" class="form-control" />
-                <span asp-validation-for="DoctorID" class="text-danger"></span>
+                <label asp-for="ApellidoDoctor" class="control-label">Apellido del doctor:</label>
+                <input asp-for="ApellidoDoctor" class="form-control" />
+                <span asp-validation-for="ApellidoDoctor" class="text-danger"></span>
             </div>
             <div class="form-group justify-content-between ">
                 <button type="submit" class="btn btn-info">

@@ -4,6 +4,7 @@ using Hospital_Management2.Models;
 using Hospital_Management2.Repositories.Cita;
 using Hospital_Management2.Repositories.Doctor;
 using Hospital_Management2.Repositories.Habitacion;
+using Hospital_Management2.Repositories.Ingreso;
 using Hospital_Management2.Repositories.Medicamento;
 using Hospital_Management2.Repositories.Paciente;
 using Hospital_Management2.Repositories.Prescripcion;
@@ -38,6 +39,8 @@ namespace Hospital_Management2
 			builder.Services.AddScoped<IMedicamentoRepository,  MedicamentoRepository>();
             builder.Services.AddScoped<ICitaRepository, CitaRepository>();
 			builder.Services.AddScoped<IPrescripcionRepository, PrescripcionRepository>();
+			builder.Services.AddScoped<IIngresoRepository, IngresoRepository>();
+
 
             // Validaciones
             builder.Services.AddScoped<IValidator<PacienteModel>, PacienteValidator>();
@@ -46,6 +49,8 @@ namespace Hospital_Management2
 			builder.Services.AddScoped<IValidator<MedicamentoModel>, MedicamentoValidator>();
             builder.Services.AddScoped<IValidator<CitaModel>, CitaValidator>();
 			builder.Services.AddScoped<IValidator<PrescripcionModel>, PrescripcionValidator>();
+			builder.Services.AddScoped<IValidator<IngresoModel>, IngresoValidator>();
+
 
             //Services
             builder.Services.AddTransient<IEmailServices, EmailServices>();

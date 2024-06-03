@@ -16,16 +16,6 @@
             <form asp-action="Create" onsubmit="return confirmAction();">
                 @Html.AntiForgeryToken()
                 <div class="mb-3">
-                    <label asp-for="PacienteID" class="form-label">PacienteID: </label>
-                    <input asp-for="PacienteID" type="text" class="form-control" />
-                    <span asp-validation-for="PacienteID" class="text-danger"></span>
-                </div>
-                <div class="mb-3">
-                    <label asp-for="DoctorID" class="form-label">DoctorID: </label>
-                    <input asp-for="DoctorID" type="text" class="form-control" />
-                    <span asp-validation-for="DoctorID" class="text-danger"></span>
-                </div>
-                <div class="mb-3">
                     <label asp-for="FechaCita" class="form-label">Fecha de la cita: </label>
                     <input asp-for="FechaCita" type="text" class="form-control" />
                     <span asp-validation-for="FechaCita" class="text-danger"></span>
@@ -39,6 +29,26 @@
                     <label asp-for="EstadoCitas" class="form-label">Estado de la cita:</label>
                     <input asp-for="EstadoCitas" type="text" class="form-control" />
                     <span asp-validation-for="EstadoCitas" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="NombreDoctor" class="form-label">Nombre del doctor: </label>
+                    <input asp-for="NombreDoctor" type="text" class="form-control" />
+                    <span asp-validation-for="NombreDoctor" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ApellidoDoctor" class="form-label">Apellido del doctor: </label>
+                    <input asp-for="ApellidoDoctor" type="text" class="form-control" />
+                    <span asp-validation-for="ApellidoDoctor" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="NombrePaciente" class="form-label">PacienteID: </label>
+                    <input asp-for="NombrePaciente" type="text" class="form-control" />
+                    <span asp-validation-for="NombrePaciente" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ApellidoPaciente" class="form-label">Apellido del paciente: </label>
+                    <input asp-for="ApellidoPaciente" type="text" class="form-control" />
+                    <span asp-validation-for="ApellidoPaciente" class="text-danger"></span>
                     <br />
                     <div class="col-4 offset-1 row">
                         <div class="col">
