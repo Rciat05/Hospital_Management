@@ -20,7 +20,7 @@ namespace Hospital_Management2.Validations
 
 			RuleFor(cita => cita.MotivoCita)
 				.NotEmpty().WithMessage("El motivo de la cita es obligatorio")
-				.Length(10, 200).WithMessage("El motivo de la cita debe tener entre 1 y 200 caracteres");
+				.Length(2, 100).WithMessage("El motivo de la cita debe tener entre 2 y 100 caracteres");
 
 			RuleFor(cita => cita.EstadoCitas)
 				.NotEmpty().WithMessage("El estado de la cita es obligatorio")

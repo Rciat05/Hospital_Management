@@ -1,6 +1,7 @@
 using FluentValidation;
 using Hospital_Management2.Data;
 using Hospital_Management2.Models;
+using Hospital_Management2.Repositories.Cita;
 using Hospital_Management2.Repositories.Doctor;
 using Hospital_Management2.Repositories.Habitacion;
 using Hospital_Management2.Repositories.Medicamento;
@@ -34,12 +35,14 @@ namespace Hospital_Management2
 			builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
             builder.Services.AddScoped<IHabitacionRepository, HabitacionRepository>();
 			builder.Services.AddScoped<IMedicamentoRepository,  MedicamentoRepository>();
+            builder.Services.AddScoped<ICitaRepository, CitaRepository>();
 
             // Validaciones
             builder.Services.AddScoped<IValidator<PacienteModel>, PacienteValidator>();
 			builder.Services.AddScoped<IValidator<DoctorModel>, DoctorValidator>();
 			builder.Services.AddScoped<IValidator<HabitacionModel>, HabitacionValidator>();
 			builder.Services.AddScoped<IValidator<MedicamentoModel>, MedicamentoValidator>();
+            builder.Services.AddScoped<IValidator<CitaModel>, CitaValidator>();
 
             //Services
             builder.Services.AddTransient<IEmailServices, EmailServices>();

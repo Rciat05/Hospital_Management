@@ -23,5 +23,6 @@ namespace Hospital_Management2.Models
 		[Required(ErrorMessage = "El estado de la cita es requerido")]
 		[StringLength(1, ErrorMessage = "El estado de la cita debe ser de un solo carácter")]
 		public string EstadoCitas { get; set; }
+
 	}
 }

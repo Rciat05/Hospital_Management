@@ -1,8 +1,92 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Página de Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .card-img-top {
+        width: 100%;
+        height: 200px; /* Ajusta la altura según tus necesidades */
+        object-fit: cover; /* Esto asegurará que la imagen cubra el área sin distorsionarse */
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Bienvenido al Sistema de Gestión Hospitalaria Rios de agua viva</h1>
+        <p class="lead">Gestione citas, pacientes, doctores, habitaciones e ingresos de manera eficiente y sencilla.</p>
+        <hr class="my-4">
+        <p>Explore las características y funcionalidades de nuestra plataforma para mejorar la atención médica.</p>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="~/images/Cita.jpg" alt="Citas">
+                <div class="card-body">
+                    <h5 class="card-title">Gestión de Citas</h5>
+                    <p class="card-text">Programe y administre citas médicas de manera eficiente.</p>
+                    <a class="btn btn-primary" asp-controller="Cita" asp-action="Index"> Ver Citas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="~/images/Paciente.jpg" alt="Pacientes">
+                <div class="card-body">
+                    <h5 class="card-title">Gestión de Pacientes</h5>
+                    <p class="card-text">Administre la información de los pacientes de forma segura.</p>
+                    <a class="btn btn-primary" asp-controller="Paciente" asp-action="Index"> Ver Pacientes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="~/images/doctor.jpg" alt="Doctores">
+                <div class="card-body">
+                    <h5 class="card-title">Gestión de Doctores</h5>
+                    <p class="card-text">Mantenga actualizada la información de su personal médico.</p>
+                    <a class="btn btn-primary" asp-controller="Doctor" asp-action="Index"> Ver Doctores</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="~/images/Habitacion.jpg" alt="Habitaciones">
+                <div class="card-body">
+                    <h5 class="card-title">Gestión de Habitaciones</h5>
+                    <p class="card-text">Administre las habitaciones y su disponibilidad.</p>
+                    <a class="btn btn-primary" asp-controller="Habitacion" asp-action="Index"> Ver Habitacion</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="~/images/Ingresos.png" alt="Ingresos">
+                <div class="card-body">
+                    <h5 class="card-title">Gestión de Ingresos</h5>
+                    <p class="card-text">Controle los ingresos y altas de pacientes.</p>
+                    <a class="btn btn-primary" asp-controller="Ingresos" asp-action="Index"> Ver Ingresos</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="~/images/medicamentos.png" alt="Medicamentos">
+                <div class="card-body">
+                    <h5 class="card-title">Gestión de Medicamentos</h5>
+                    <p class="card-text">Administre los medicamentos y prescripciones.</p>
+                    <a class="btn btn-primary" asp-controller="Medicamento" asp-action="Index"> Ver Medicamentos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12 text-center">
+            <p class="text-muted">© 2024 Sistema de Gestión Hospitalaria. Todos los derechos reservados.</p>
+        </div>
+    </div>
 </div>
