@@ -1,0 +1,9 @@
+Grupo #1 Gestion de Hospital
+
+Alvin Ezequiel Rosales Hernández - U20230560
+Roberto Carlos Iglesias Álvarez - U20230727
+Jorge Humberto Lara Rodezno - U20230258
+Steven Schafick Molina Ventura- U20231258
+
+Link de GitHub:
+	https://github.com/Rciat05/Hospital_Management.git
