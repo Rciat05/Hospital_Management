@@ -6,15 +6,23 @@ namespace Hospital_Management2.Validations
 	public class IngresoValidator : AbstractValidator<IngresoModel>
 	{
 		public IngresoValidator() {
-			RuleFor(ingreso => ingreso.PacienteID)
-				.NotEmpty().WithMessage("El ID del paciente es obligatorio")
-				.GreaterThan(0).WithMessage("El ID del paciente debe ser mayor que cero");
+			RuleFor(ingreso => ingreso.NombrePaciente)
+                .Length(3, 50)
+                .NotNull().WithMessage("El nombre del paciente es obligatorio");
 
-			RuleFor(ingreso => ingreso.HabitacionID)
-				.NotEmpty().WithMessage("El ID de la habitación es obligatorio")
-				.GreaterThan(0).WithMessage("El ID de la habitación debe ser mayor que cero");
+            RuleFor(ingreso => ingreso.ApellidoPaciente)
+                .Length(3, 50)
+                 .NotNull().WithMessage("El apellido del paciente es obligatorio");
 
-			RuleFor(ingreso => ingreso.FechaIngreso)
+            RuleFor(ingreso => ingreso.NumeroHabitacion)
+                .Length(1, 10)
+                .NotNull().WithMessage("El numero de habitación es obligatorio");
+
+            RuleFor(ingreso => ingreso.TipoHabitacion)
+                .Length(2, 30)
+                .NotNull().WithMessage("El Tipo de habitación es obligatorio");
+
+            RuleFor(ingreso => ingreso.FechaIngreso)
 				.NotEmpty().WithMessage("La fecha de los ingresos es obligatoria");
 
 			RuleFor(ingreso => ingreso.FechaAlta)

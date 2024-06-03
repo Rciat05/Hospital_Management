@@ -50,7 +50,7 @@ namespace Hospital_Management2.Repositories.Ingreso
         {
             await _dataAccess.SaveDataAsync(
                 "spIngreso_Insert",
-                new { ingreso.PacienteID, ingreso.HabitacionID, ingreso.FechaIngreso, ingreso.FechaAlta, ingreso.DiagnosticoInicial, ingreso.EstadoIngresos });
+                new { ingreso.NombrePaciente, ingreso.ApellidoPaciente, ingreso.NumeroHabitacion, ingreso.TipoHabitacion, ingreso.FechaIngreso, ingreso.FechaAlta, ingreso.DiagnosticoInicial, ingreso.EstadoIngresos });
         }
     }
 }
