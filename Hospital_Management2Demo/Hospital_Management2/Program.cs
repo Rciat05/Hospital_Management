@@ -6,6 +6,7 @@ using Hospital_Management2.Repositories.Doctor;
 using Hospital_Management2.Repositories.Habitacion;
 using Hospital_Management2.Repositories.Medicamento;
 using Hospital_Management2.Repositories.Paciente;
+using Hospital_Management2.Repositories.Prescripcion;
 using Hospital_Management2.Services;
 using Hospital_Management2.Validations;
 using Microsoft.AspNetCore.Identity;
@@ -36,6 +37,7 @@ namespace Hospital_Management2
             builder.Services.AddScoped<IHabitacionRepository, HabitacionRepository>();
 			builder.Services.AddScoped<IMedicamentoRepository,  MedicamentoRepository>();
             builder.Services.AddScoped<ICitaRepository, CitaRepository>();
+			builder.Services.AddScoped<IPrescripcionRepository, PrescripcionRepository>();
 
             // Validaciones
             builder.Services.AddScoped<IValidator<PacienteModel>, PacienteValidator>();
@@ -43,6 +45,7 @@ namespace Hospital_Management2
 			builder.Services.AddScoped<IValidator<HabitacionModel>, HabitacionValidator>();
 			builder.Services.AddScoped<IValidator<MedicamentoModel>, MedicamentoValidator>();
             builder.Services.AddScoped<IValidator<CitaModel>, CitaValidator>();
+			builder.Services.AddScoped<IValidator<PrescripcionModel>, PrescripcionValidator>();
 
             //Services
             builder.Services.AddTransient<IEmailServices, EmailServices>();

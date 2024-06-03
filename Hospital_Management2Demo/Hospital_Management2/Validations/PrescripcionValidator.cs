@@ -3,9 +3,9 @@ using Hospital_Management2.Models;
 
 namespace Hospital_Management2.Validations
 {
-	public class PreinscripcionValidator : AbstractValidator<PreinscripcionModel>
+	public class PrescripcionValidator : AbstractValidator<PrescripcionModel>
 	{
-		public PreinscripcionValidator()
+		public PrescripcionValidator()
 		{
 			RuleFor(prescripcion => prescripcion.CitaID)
 				.NotEmpty().WithMessage("El ID de la cita es obligatorio")
