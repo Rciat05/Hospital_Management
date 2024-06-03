@@ -19,12 +19,8 @@ namespace Hospital_Management2.Data
 			_logger = logger;
 		}
 
-        public IDisposable GetConnection()
-        {
-            throw new NotImplementedException();
-        }
 
-        public async Task<IEnumerable<T>> GetDataAsync<T, P>(
+		public async Task<IEnumerable<T>> GetDataAsync<T, P>(
 			string storedProcedure, P parameters, string connection = "DefaultConnection")
 		{
 			try
@@ -56,6 +52,7 @@ namespace Hospital_Management2.Data
 			string connection = "DefaultConnection")
 		{
 			try
+
 			{
 				var connectionString = _configuration.GetConnectionString(connection);
 
