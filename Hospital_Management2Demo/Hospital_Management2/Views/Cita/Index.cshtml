@@ -22,8 +22,10 @@
 						<th>Fecha Cita</th>
 						<th>Motivo cita</th>
 						<th>Estado cita</th>
-						<th>DoctorID</th>
-						<th>PacienteID</th>
+						<th>Doctor</th>
+						<th>Apellido </th>
+						<th>Paciente</th>
+						<th>Apellido</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
@@ -34,8 +36,10 @@
 							<td>@Html.DisplayFor(modelItem => item.FechaCita)</td>
 							<td>@Html.DisplayFor(modelItem => item.MotivoCita)</td>
 							<td>@Html.DisplayFor(modelItem => item.EstadoCitas)</td>
-							<td>@Html.DisplayFor(modelItem => item.DoctorID)</td>
-							<td>@Html.DisplayFor(modelItem => item.PacienteID)</td>
+							<td>@Html.DisplayFor(modelItem => item.NombreDoctor)</td>
+							<td>@Html.DisplayFor(modelItem => item.ApellidoDoctor)</td>
+							<td>@Html.DisplayFor(modelItem => item.NombrePaciente)</td>
+							<td>@Html.DisplayFor(modelItem => item.ApellidoPaciente)</td>
 							<td class="text-center">
 								<div class="w-75 btn-group" role="group">
 									<a class="btn btn-warning mx-2" asp-action="Edit" asp-route-id="@item.CitaID">
