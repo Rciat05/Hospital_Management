@@ -1,5 +1,7 @@
-﻿using FluentValidation;
+﻿using Dapper;
+using FluentValidation;
 using FluentValidation.Results;
+using Hospital_Management2.Data;
 using Hospital_Management2.Models;
 using Hospital_Management2.Repositories.Doctor;
 using Hospital_Management2.Services;
@@ -7,6 +9,7 @@ using Hospital_Management2.Validations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using MiniExcelLibs;
 
 namespace Hospital_Management2.Controllers
 {
@@ -15,14 +18,18 @@ namespace Hospital_Management2.Controllers
         private readonly IDoctorRepository _doctorRepository;
         private readonly IValidator<DoctorModel> _validator;
         private readonly IEmailServices _emailService;
+
         public DoctorController(IDoctorRepository doctorRepository,
             IValidator<DoctorModel> validator,
-            IEmailServices emailService)
+            IEmailServices emailService
+			)
         {
             _doctorRepository = doctorRepository;
             _validator = validator;
             _emailService = emailService;
-        }
+			;
+		}
+
 
         // GET: DoctorController
         public async Task<ActionResult> Index()
@@ -32,9 +39,8 @@ namespace Hospital_Management2.Controllers
             return View(doctor);
         }
 
-
-        // GET: DoctorController/Details/5
-        public ActionResult Details(int id)
+		// GET: DoctorController/Details/5
+		public ActionResult Details(int id)
         {
             return View();
         }
@@ -52,7 +58,7 @@ namespace Hospital_Management2.Controllers
         {
             try
             {
-                string email = "HospitalRiosAguaViva@gmail.com";
+                string email = "HospitalRiosAguaViva @gmail.com";
                 string subject = "Nuevo Doctor";
                 string body = "Bienvenido a tu nuevo empleo de doctor en nuestro hospital! un gusto " + doctor.NombreDoctor;
 
