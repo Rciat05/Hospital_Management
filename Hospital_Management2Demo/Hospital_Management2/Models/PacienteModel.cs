@@ -30,3 +30,4 @@ namespace Hospital_Management2.Models
 
     }
 }
+

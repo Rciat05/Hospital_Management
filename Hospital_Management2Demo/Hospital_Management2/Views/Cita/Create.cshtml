@@ -1,0 +1,86 @@
+﻿@model Hospital_Management2.Models.CitaModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<hr />
+<h1>Crear nueva cita</h1>
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <form asp-action="Create" onsubmit="return confirmAction();">
+                @Html.AntiForgeryToken()
+                <div class="mb-3">
+                    <label asp-for="FechaCita" class="form-label">Fecha de la cita: </label>
+                    <input asp-for="FechaCita" type="text" class="form-control" />
+                    <span asp-validation-for="FechaCita" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MotivoCita" class="form-label">Motivo de la Cita: </label>
+                    <input asp-for="MotivoCita" type="text" class="form-control" />
+                    <span asp-validation-for="MotivoCita" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="EstadoCitas" class="form-label">Estado de la cita:</label>
+                    <input asp-for="EstadoCitas" type="text" class="form-control" />
+                    <span asp-validation-for="EstadoCitas" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="NombreDoctor" class="form-label">Nombre del doctor: </label>
+                    <input asp-for="NombreDoctor" type="text" class="form-control" />
+                    <span asp-validation-for="NombreDoctor" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ApellidoDoctor" class="form-label">Apellido del doctor: </label>
+                    <input asp-for="ApellidoDoctor" type="text" class="form-control" />
+                    <span asp-validation-for="ApellidoDoctor" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="NombrePaciente" class="form-label">PacienteID: </label>
+                    <input asp-for="NombrePaciente" type="text" class="form-control" />
+                    <span asp-validation-for="NombrePaciente" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ApellidoPaciente" class="form-label">Apellido del paciente: </label>
+                    <input asp-for="ApellidoPaciente" type="text" class="form-control" />
+                    <span asp-validation-for="ApellidoPaciente" class="text-danger"></span>
+                    <br />
+                    <div class="col-4 offset-1 row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                        </div>
+                        <div class="col">
+                            <a href="@Url.Action("Index", "Cita")" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+    <script>
+        function confirmAction() {
+            if (confirm('¿Estás seguro de agregar esta cita?')) {
+                return true; // Si el usuario hace clic en "Aceptar", el formulario se envía al servidor
+            } else {
+                window.location.href = '@Url.Action("Index", "Cita")'; // Redirigir al usuario al índice si hace clic en "Cancelar"
+                return false; // Devolver false para cancelar el envío del formulario
+            }
+        }
+    </script>
+}

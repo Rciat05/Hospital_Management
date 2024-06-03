@@ -7,13 +7,19 @@ namespace Hospital_Management2.Models
 		[Key]
 		public int IngresoID { get; set; }
 
-		[Required(ErrorMessage = "El ID del paciente es requerido")]
-		public int PacienteID { get; set; }
+        [Required(ErrorMessage = "El nombre del paciente no debe estar vacío")]
+        public string NombrePaciente { get; set; }
 
-		[Required(ErrorMessage = "El ID de la habitación es requerido")]
-		public int HabitacionID { get; set; }
+        [Required(ErrorMessage = "El apellido del paciente no debe estar vacío")]
+        public string ApellidoPaciente { get; set; }
 
-		[Required(ErrorMessage = "La fecha del ingreso no debe estar vacío")]
+        [Required(ErrorMessage = "El numero de Habitacion no debe estar vacío")]
+        public string NumeroHabitacion { get; set; }
+
+        [Required(ErrorMessage = "El Tipo de habitacion no debe estar vacío")]
+        public string TipoHabitacion { get; set; }
+
+        [Required(ErrorMessage = "La fecha del ingreso no debe estar vacío")]
 		public DateTime FechaIngreso { get; set; }
 
 		[DataType(DataType.DateTime)]
@@ -27,3 +33,5 @@ namespace Hospital_Management2.Models
 		public string EstadoIngresos { get; set; }
 	}
 }
+
+
